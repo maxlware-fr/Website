@@ -1,0 +1,153 @@
+<!---
+█▀▄▀█ ▄▀█ █▀▄ █▄░█ █░█ ▄█░ █▀█ ▄▀█ █▀█ █▀▀
+█░▀░█ █▀█ █▄▀ █░▀█ █▀█ ░█▄ █▄█ █▀█ █▀▄ ██▄
+
+Version : 9.3
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crédits</title>
+    <link rel="icon" href="assets/pp2.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #f0f0f0;
+  --accent: #5eead4;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  animation: slideDown 0.7s ease;
+}
+
+.credit-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.credit-item {
+  background-color: var(--card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.credit-item:nth-child(1) { animation-delay: 0.2s; }
+.credit-item:nth-child(2) { animation-delay: 0.4s; }
+.credit-item:nth-child(3) { animation-delay: 0.6s; }
+.credit-item:nth-child(4) { animation-delay: 0.8s; }
+
+.credit-item h2 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.credit-item p {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.credit-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+.back-button {
+  text-decoration: none;
+  background: var(--accent);
+  color: #000;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: #2dd4bf;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">Crédits</h1>
+    <div class="credit-list">
+      <div class="credit-item">
+        <h2>MaxMew</h2>
+        <p>Développeur principal</p>
+      </div>
+      <div class="credit-item">
+        <h2>Toi ❤️</h2>
+        <p>Merci d'utiliser ce projet</p>
+      </div>
+    </div>
+    <a href="index.html" class="back-button">← Retour</a>
+  </main>
+</body>
+</html>

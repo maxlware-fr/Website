@@ -1,0 +1,160 @@
+<!---
+█▀▄▀█ ▄▀█ █▀▄ █▄░█ █░█ ▄█░ █▀█ ▄▀█ █▀█ █▀▀
+█░▀░█ █▀█ █▄▀ █░▀█ █▀█ ░█▄ █▄█ █▀█ █▀▄ ██▄
+
+Version : 9.3
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #00ffe0, #ff00c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 0 10px #00ffe07a;
+    }
+
+    ul.page-list {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 600px;
+      animation: fadeInUp 1.4s ease-out;
+    }
+
+    .page-list li {
+      background-color: #1a1a1a;
+      margin: 10px 0;
+      padding: 15px 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: 0 0 5px #00ffe060;
+    }
+
+    .page-list li:hover {
+      background-color: #252525;
+      transform: translateX(5px);
+    }
+
+    .page-list a {
+      color: #00ffe0;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .no-result {
+      text-align: center;
+      color: #999;
+      margin-top: 20px;
+      display: none;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Toutes les pages</h1>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Rechercher une page...">
+  </div>
+
+  <ul class="page-list" id="pageList">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="404.html">Page 404</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="link.html?link=Lumen">Lumen</a></li>
+    <li><a href="traficoo.html?link=Traficoo">Traficoo</a></li>
+    <li><a href="maj.html">Mises à jour</a></li>
+    <li><a href="chat.html">Chat</a></li>
+    <li><a href="projets.html">Mes projets</a></li>
+  </ul>
+
+  <p class="no-result" id="noResult">Aucune page trouvée.</p>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const pageList = document.getElementById("pageList");
+    const noResult = document.getElementById("noResult");
+
+    searchInput.addEventListener("input", () => {
+      const filter = searchInput.value.toLowerCase();
+      const items = pageList.getElementsByTagName("li");
+      let visibleCount = 0;
+
+      Array.from(items).forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(filter)) {
+          item.style.display = "";
+          visibleCount++;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      noResult.style.display = visibleCount === 0 ? "block" : "none";
+    });
+  </script>
+</body>
+</html>

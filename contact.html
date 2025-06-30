@@ -1,0 +1,183 @@
+<!---
+█▀▄▀█ ▄▀█ █▀▄ █▄░█ █░█ ▄█░ █▀█ ▄▀█ █▀█ █▀▀
+█░▀░█ █▀█ █▄▀ █░▀█ █▀█ ░█▄ █▄█ █▀█ █▀▄ ██▄
+
+Version : 9.3
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 - Page non trouvée</title>
+    <link rel="icon" href="assets/pp2.png">
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0e0e0e;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.glitch {
+  font-size: 10rem;
+  font-weight: bold;
+  position: relative;
+  color: #ffffff;
+  animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #00fff2;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  animation: glitchTop 2s infinite linear;
+}
+
+.glitch::after {
+  color: #ff005a;
+  animation: glitchBottom 1.5s infinite linear;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+p {
+  margin: 10px 0 30px;
+  color: #999;
+}
+
+.btn {
+  background: #1f1f1f;
+  border: 1px solid #fff;
+  padding: 12px 24px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn:hover {
+  background: #ffffff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+
+@keyframes glitch {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: skew(-5deg);
+  }
+  40% {
+    transform: skew(5deg);
+  }
+  60% {
+    transform: skew(-5deg);
+  }
+  80% {
+    transform: skew(5deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes glitchTop {
+  0% {
+    clip: rect(0, 900px, 0, 0);
+  }
+  10% {
+    clip: rect(10px, 900px, 80px, 0);
+  }
+  20% {
+    clip: rect(20px, 900px, 90px, 0);
+  }
+  30% {
+    clip: rect(30px, 900px, 100px, 0);
+  }
+  40% {
+    clip: rect(40px, 900px, 110px, 0);
+  }
+  100% {
+    clip: rect(0, 900px, 0, 0);
+  }
+}
+
+@keyframes glitchBottom {
+  0% {
+    clip: rect(0, 900px, 0, 0);
+  }
+  10% {
+    clip: rect(60px, 900px, 120px, 0);
+  }
+  20% {
+    clip: rect(70px, 900px, 130px, 0);
+  }
+  30% {
+    clip: rect(80px, 900px, 140px, 0);
+  }
+  40% {
+    clip: rect(90px, 900px, 150px, 0);
+  }
+  100% {
+    clip: rect(0, 900px, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="glitch" data-text="404">404</div>
+    <h2>Page non trouvée</h2>
+    <p>Oups... Il semble que cette page n'existe pas ou a été déplacée.</p>
+    <a href="index.html" class="btn">Retour à l'accueil</a>
+  </div>
+</body>
+<script>
+    console.log("Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware")
+    console.log("Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware")
+    console.log("Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware | Maxlware")
+</script>
+</html>

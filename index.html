@@ -1,0 +1,115 @@
+<!---
+█▀▄▀█ ▄▀█ █▀▄ █▄░█ █░█ ▄█░ █▀█ ▄▀█ █▀█ █▀▀
+█░▀░█ █▀█ █▄▀ █░▀█ █▀█ ░█▄ █▄█ █▀█ █▀▄ ██▄
+
+Version : 9.3
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxlware | Site officiel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/pp2.png">
+</head>
+<body>
+<div id="loader" class="loader-container">
+  <div class="lds-dual-ring"></div>
+</div>
+
+<div id="main-content">
+    <div class="cursor-trail"></div>
+    
+    <div class="bento-grid">
+        <div class="bento-card card-1" data-tilt>
+            <div class="profile">
+                <img src="assets/pp.png" alt="Photo de profil" class="profile-pic">
+                <h1>Salut, moi c'est <span class="name-highlight">Maxlware</span> 👋</h1>
+                <p class="subtitle">Développeur / Pro en memes</p>
+            </div>
+        </div>
+
+        <div class="bento-card card-2" data-tilt>
+            <h2><i class="fas fa-chart-line"></i> Mes Stats</h2>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="99">0</span>
+                    <span class="stat-label">Fuze Tea bu</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="42">0</span>
+                    <span class="stat-label">Projets bizarres</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="7">0</span>
+                    <span class="stat-label">Heures de sommeil</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-card card-3" data-tilt>
+            <h2><i class="fas fa-code"></i> Mes Skills</h2>
+            <div class="skills">
+                <div class="skill">
+                    <span class="skill-name">HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Python</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-card card-4" data-tilt>
+            <h2><i class="fas fa-rocket"></i> Mes Projets</h2>
+            <div class="projects">
+                <div class="project" data-project="1">
+                    <img src="assets/p1.PNG" alt="Projet 1">
+                    <h3>Bot discord</h3>
+                </div>
+                <div class="project" data-project="2">
+                    <img src="assets/p2.PNG" alt="Projet 2">
+                    <h3>Site web de trafic</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-card card-5" data-tilt>
+            <h2><i class="fas fa-paper-plane"></i> Contacte-moi</h2>
+            <div class="contact-buttons">
+                <a href="link.html?link=discord" class="neon-button"><i class="fab fa-discord"></i> Discord</a>
+                <a href="link.html?link=x" class="neon-button"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="link.html?link=github" class="neon-button"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+
+        <div class="bento-card card-6" data-tilt>
+            <h2><i class="fas fa-lightbulb"></i> Fun Fact</h2>
+            <p class="fun-fact">Je code parfois en pyjama 🦥</p>
+            <button id="fact-generator">Nouveau Fun Fact</button>
+        </div>
+    </div>
+
+    <canvas id="particles"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
