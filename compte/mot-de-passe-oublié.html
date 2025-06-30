@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxCompte | Réinitialisation du mot de passe</title>
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #bb86fc;
+            --accent-hover: #9b5ff4;
+            --border-color: #333333;
+            --input-bg: #2d2d2d;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --success-color: #4caf50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(187, 134, 252, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(187, 134, 252, 0.1) 0%, transparent 50%);
+        }
+
+        .reset-container {
+            background-color: var(--bg-secondary);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .reset-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reset-header h1 {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .reset-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .reset-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent-color);
+            color: #121212;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .reset-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .reset-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .reset-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            display: none;
+            background-color: rgba(76, 175, 80, 0.2);
+            border: 1px solid var(--success-color);
+            color: var(--text-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .steps {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .steps li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reset-container">
+        <div class="reset-header">
+            <div class="reset-icon">🔒</div>
+            <h1>Mot de passe oublié ?</h1>
+            <p>Entrez votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Un email de réinitialisation a été envoyé à votre adresse. Veuillez vérifier votre boîte de réception.
+        </div>
+
+        <form id="resetForm">
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" class="form-control" placeholder="Entrez votre email" required>
+            </div>
+
+            <button type="submit" class="btn">Envoyer le lien de réinitialisation</button>
+        </form>
+
+        <div class="reset-footer">
+            <p>Vous vous souvenez de votre mot de passe ? <a href="login.html">Se connecter</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('resetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulation d'envoi d'email
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Réinitialiser le formulaire
+            this.reset();
+            
+            // Cacher le message après 5 secondes (pour la démo)
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxCompte | Gestion du Compte</title>
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #252525;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #bb86fc;
+            --accent-hover: #9b5ff4;
+            --border-color: #333333;
+            --input-bg: #2d2d2d;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .profile-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar-upload {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .avatar-upload:hover .avatar {
+            border-color: var(--accent-color);
+        }
+
+        .avatar-upload input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: #121212;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .upload-label:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.1);
+        }
+
+        .profile-card h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .profile-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--bg-tertiary);
+            color: var(--accent-color);
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #121212;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #d32f2f;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .alert-success {
+            background-color: rgba(76, 175, 80, 0.2);
+            border: 1px solid var(--success-color);
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <div class="avatar-upload">
+                    <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar" id="avatarPreview">
+                    <label class="upload-label" for="avatarInput">+</label>
+                    <input type="file" id="avatarInput" accept="image/*">
+                </div>
+                <h3>Jean Dupont</h3>
+                <p>jean.dupont@example.com</p>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active"><i>👤</i> Profil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i>🔒</i> Sécurité</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i>⚙️</i> Paramètres</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i>📧</i> Notifications</a></li>
+                <li class="nav-item"><a href="deconnexion.html" class="nav-link"><i>🚪</i> Déconnexion</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="section-header">
+                <h2>Informations du profil</h2>
+            </div>
+
+            <div class="alert alert-success" id="successAlert">
+                Votre profil a été mis à jour avec succès !
+            </div>
+
+            <form id="profileForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">Prénom</label>
+                        <input type="text" id="firstName" class="form-control" value="Jean">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Nom</label>
+                        <input type="text" id="lastName" class="form-control" value="Dupont">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse email</label>
+                        <input type="email" id="email" class="form-control" value="jean.dupont@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" class="form-control" value="+33 6 12 34 56 78">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthdate">Date de naissance</label>
+                        <input type="date" id="birthdate" class="form-control" value="1985-05-15">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Pays</label>
+                        <select id="country" class="form-control">
+                            <option value="FR" selected>France</option>
+                            <option value="BE">Belgique</option>
+                            <option value="CH">Suisse</option>
+                            <option value="CA">Canada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" class="form-control" rows="4">Développeur web passionné par les interfaces utilisateur modernes et le design.</textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                    <button type="button" class="btn btn-danger">Supprimer le compte</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        // Gestion de l'upload de l'avatar
+        const avatarInput = document.getElementById('avatarInput');
+        const avatarPreview = document.getElementById('avatarPreview');
+        
+        avatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    avatarPreview.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Simulation de sauvegarde du profil
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successAlert = document.getElementById('successAlert');
+            successAlert.classList.add('show');
+            
+            setTimeout(() => {
+                successAlert.classList.remove('show');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
