@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion à Traficoo - Autorisation requise</title>
+    <style>
+        /* [Vos styles CSS existants restent identiques] */
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #bb86fc;
+            --accent-hover: #9b5ff4;
+            --border-color: #333333;
+            --input-bg: #2d2d2d;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --warning-color: #ff9800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .oauth-container {
+            background-color: var(--bg-secondary);
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .oauth-header {
+            margin-bottom: 30px;
+        }
+
+        .oauth-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .oauth-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background-color: var(--input-bg);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .permissions {
+            background-color: var(--input-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .permissions h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .permissions h3::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+
+        .permissions ul {
+            list-style: none;
+        }
+
+        .permissions li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .permissions li::before {
+            content: "•";
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .user-details h4 {
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .user-details p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #121212;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--input-bg);
+        }
+
+        .footer-text {
+            margin-top: 25px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .footer-text a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="oauth-container">
+        <div class="oauth-header">
+            <div class="app-icon">T</div>
+            <h1>Traficoo souhaite accéder à votre compte</h1>
+            <p>Cette application pourra :</p>
+        </div>
+
+        <div class="user-info">
+            <img src="https://via.placeholder.com/50" alt="Avatar" class="user-avatar">
+            <div class="user-details">
+                <h4>Jean Dupont</h4>
+                <p>jean.dupont@example.com</p>
+            </div>
+        </div>
+
+        <div class="permissions">
+            <h3>Cette application pourra :</h3>
+            <ul>
+                <li>Voir votre nom et adresse email</li>
+                <li>Accéder à vos informations de profil</li>
+                <li>Effectuer des actions en votre nom</li>
+                <li>Enregistrer des données sur votre compte</li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-outline" id="cancelBtn">Annuler</button>
+            <button class="btn btn-primary" id="authorizeBtn">Autoriser</button>
+        </div>
+
+        <p class="footer-text">
+            En continuant, vous acceptez les <a href="https://traficoo.eletrix.fr/cgu.html">conditions d'utilisation</a> 
+            et la <a href="https://traficoo.eletrix.fr/confidentialite.html">politique de confidentialité</a> de Traficoo.
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fonction pour récupérer les paramètres d'URL
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Récupération des paramètres
+            const redirectUri = getQueryParam('redirect');
+            const clientId = getQueryParam('client_id');
+            const appName = getQueryParam('name') || 'Traficoo';
+
+            // Vérification des paramètres requis
+            if (!redirectUri) {
+                console.error("Le paramètre 'redirect' est manquant dans l'URL");
+                alert("Configuration incorrecte: URL de redirection manquante");
+                return;
+            }
+
+            // Mise à jour dynamique de l'interface
+            if (appName) {
+                document.querySelector('.app-icon').textContent = appName.charAt(0);
+                document.querySelector('h1').textContent = `${appName} souhaite accéder à votre compte`;
+            }
+
+            // Gestion du bouton Autoriser
+            document.getElementById('authorizeBtn').addEventListener('click', function() {
+                try {
+                    // Simulation d'un code d'autorisation
+                    const authCode = 'AUTH_' + Math.random().toString(36).substring(2, 15);
+                    
+                    // Construction de l'URL de redirection
+                    let redirectUrl = new URL(redirectUri);
+                    redirectUrl.searchParams.append('code', authCode);
+                    if (clientId) {
+                        redirectUrl.searchParams.append('state', clientId);
+                    }
+                    
+                    // Redirection
+                    window.location.href = redirectUrl.toString();
+                } catch (error) {
+                    console.error("Erreur lors de la redirection:", error);
+                    alert("Une erreur est survenue lors de la redirection");
+                }
+            });
+
+            // Gestion du bouton Annuler
+            document.getElementById('cancelBtn').addEventListener('click', function() {
+                try {
+                    let redirectUrl = new URL(redirectUri);
+                    redirectUrl.searchParams.append('error', 'access_denied');
+                    if (clientId) {
+                        redirectUrl.searchParams.append('state', clientId);
+                    }
+                    window.location.href = redirectUrl.toString();
+                } catch (error) {
+                    console.error("Erreur lors de l'annulation:", error);
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
