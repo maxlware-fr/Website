@@ -1,0 +1,364 @@
+<!---
+█▀▄▀█ ▄▀█ █▀▄ █▄░█ █░█ ▄█░ █▀█ ▄▀█ █▀█ █▀▀
+█░▀░█ █▀█ █▄▀ █░▀█ █▀█ ░█▄ █▄█ █▀█ █▀▄ ██▄
+
+Version : 9.5
+-->
+
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Lumen</title>
+        <link rel="icon" href="pp2.png">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --primary-dark: #4b2d7f;
+            --text: #333;
+            --text-light: #666;
+            --background: #f9f9f9;
+            --card-bg: #fff;
+            --border: #e1e1e1;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --success: #2ecc71;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --primary: #8a63d2;
+            --primary-dark: #6e48aa;
+            --text: #f0f0f0;
+            --text-light: #b0b0b0;
+            --background: #121212;
+            --card-bg: #1e1e1e;
+            --border: #333;
+            --error: #ff6b6b;
+            --warning: #ffbe76;
+            --success: #51cf66;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-dark);
+        }
+
+        .incident-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--error);
+        }
+
+        .incident-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--error);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .incident-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .incident-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .incident-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .incident-content p {
+            margin-bottom: 1rem;
+        }
+
+        .status-updates {
+            margin-top: 2rem;
+        }
+
+        .update-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 3px solid var(--primary);
+        }
+
+        .update-time {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .severity {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .severity-critical {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--error);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(110, 72, 170, 0.1);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .incident-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Lumen - Incident</div>
+            <button class="theme-toggle" id="themeToggle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8V16Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4V8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16V20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"/>
+                </svg>
+                <span>Mode sombre</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="incident-card">
+                <h1 class="incident-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3ZM1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7C12.5523 7 13 7.44772 13 8V12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12V8C11 7.44772 11.4477 7 12 7Z" fill="currentColor"/>
+                        <path d="M13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16Z" fill="currentColor"/>
+                    </svg>
+                    Incident critique - Plateforme Lumen
+                </h1>
+                
+                <div class="incident-meta">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z" fill="currentColor"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6C12.5523 6 13 6.44772 13 7V11.5858L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V7C11 6.44772 11.4477 6 12 6Z" fill="currentColor"/>
+                        </svg>
+                        Dernière mise à jour: <strong id="currentDate"></strong>
+                    </span>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z" fill="currentColor"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6C12.5523 6 13 6.44772 13 7V11.382L16.4472 13.1056C16.9412 13.3526 17.1414 13.9532 16.8944 14.4472C16.6474 14.9412 16.0468 15.1414 15.5528 14.8944L11.5528 12.8944C11.214 12.725 11 12.3788 11 12V7C11 6.44772 11.4477 6 12 6Z" fill="currentColor"/>
+                        </svg>
+                        Impact: <strong>Élevé</strong>
+                    </span>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="currentColor"/>
+                            <path d="M19 14C20.1046 14 21 13.1046 21 12C21 10.8954 20.1046 10 19 10C17.8954 10 17 10.8954 17 12C17 13.1046 17.8954 14 19 14Z" fill="currentColor"/>
+                            <path d="M5 14C6.10457 14 7 13.1046 7 12C7 10.8954 6.10457 10 5 10C3.89543 10 3 10.8954 3 12C3 13.1046 3.89543 14 5 14Z" fill="currentColor"/>
+                        </svg>
+                        Services affectés: <strong>Lumen, Iptron</strong>
+                    </span>
+                </div>
+
+                <div class="incident-content">
+                    <p>Bonjour,</p>
+                    
+                    <p>Nous sommes face à un incident critique pour @Ticket.sys à cause d'une faille de sécurité sur notre outil de développement nocode qui a affecté environ 100 bots sur plus de 3 millions de bots.</p>
+                    
+                    <p>Le bug a été corrigé mais Discord a lancé une procédure interne pour fermer de force ce service. Ce qui va affecter tous les bots Discord de Lumen, de notre partenaire Iptron et beaucoup d'autres encore.</p>
+                    
+                    <p>Si le service devrait fermer maintenant, le bot sera en arrêt complet le temps d'une solution. Cela peut être pire avec une suppression de tous les bots affiliés au service qui serait supprimé.</p>
+                    
+                    <p>Nous sommes en capacité technique de recréer le bot à notre manière.</p>
+                    
+                    <p>Ticket.sys est momentanément éteint.</p>
+                    
+                    <p>Nous sommes sincèrement désolés de ce problème que nous vivons et que vous vivez.</p>
+                </div>
+
+                <div class="severity severity-critical">CRITIQUE</div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21H16V19H12C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12V13.5C19 14.3284 18.3284 15 17.5 15C16.6716 15 16 14.3284 16 13.5V12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C13.4806 16 14.7731 15.1956 15.4649 14H17C16.175 16.0272 14.2713 17.5 12 17.5C8.96243 17.5 6.5 15.0376 6.5 12C6.5 8.96243 8.96243 6.5 12 6.5C14.2713 6.5 16.175 7.9728 17 10H15.4649C14.7731 8.8044 13.4806 8 12 8Z" fill="currentColor"/>
+                        </svg>
+                        Actualiser
+                    </button>
+                    <button class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4C2.89543 4 2 4.89543 2 6V18C2 19.1046 2.89543 20 4 20H20C21.1046 20 22 19.1046 22 18V6C22 4.89543 21.1046 4 20 4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 7L13.03 12.7C12.7213 12.8934 12.3643 12.996 12 12.996C11.6357 12.996 11.2787 12.8934 10.97 12.7L2 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Contact
+                    </button>
+                </div>
+            </div>
+        <footer>
+            <p>© 2025 Lumen Group. Tous droits réservés.</p>
+            <p>Max, CEO Lumen Group</p>
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        updateToggleText();
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            updateToggleText();
+        });
+        
+        function updateToggleText() {
+            const currentTheme = html.getAttribute('data-theme');
+            themeToggle.querySelector('span').textContent = currentTheme === 'light' ? 'Mode sombre' : 'Mode clair';
+        }
+        
+        const now = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZoneName: 'short'
+        };
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>
