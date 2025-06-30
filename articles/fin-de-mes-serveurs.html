@@ -1,0 +1,170 @@
+<!---
+█▀▄▀█ ▄▀█ █▀▄ █▄░█ █░█ ▄█░ █▀█ ▄▀█ █▀█ █▀▀
+█░▀░█ █▀█ █▄▀ █░▀█ █▀█ ░█▄ █▄█ █▀█ █▀▄ ██▄
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fin de mes serveurs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #0e0e0e;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .content {
+      max-width: 800px;
+      width: 100%;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00ffe0, #ff00c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideDown 1s ease-out;
+      text-align: center;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 1.5rem;
+      color: #aaaaaa;
+      animation: fadeInUp 1.5s ease-out;
+      text-align: center;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      margin: 30px 0;
+      gap: 15px;
+      animation: fadeInUp 2s ease-out;
+    }
+
+    .author img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #00ffe0;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-info strong {
+      font-size: 1.1rem;
+    }
+
+    .author-info span {
+      color: #888;
+      font-size: 0.95rem;
+    }
+
+    .text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d0d0d0;
+      animation: fadeInUp 2.5s ease-out;
+      margin-top: 10px;
+    }
+
+    .text a {
+      color: #00ffe0;
+      text-decoration: none;
+    }
+
+    .text a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1 class="title">Je ferme mes serveurs</h1>
+    <h2 class="subtitle">Je ferme tous mes serveurs Discord.</h2>
+
+    <div class="author">
+      <img src="pp/maxlware.png" alt="Photo de profil">
+      <div class="author-info">
+        <strong>Maxlware</strong>
+        <span>@maxlware</span>
+      </div>
+    </div>
+
+    <p class="text">
+      Suite à une totale inactivité de mes serveurs, je les ferme tous pour me concentrer.<br><br>
+      Ce qui comprend :<br>
+      - StudioLab<br>
+      - Vibes Place<br>
+      - Nominos Pizza<br>
+      - Ticket.sys - Programme BETA<br>
+      - Stream France<br><br>
+
+      <strong>MAIS !</strong><br>
+      J'ouvre <strong>"Lumen | Traficoo"</strong> dans quelques jours pour les supports de 
+      <a href="https://lumen.eletrix.fr">Lumen</a> et 
+      <a href="https://traficoo.eletrix.fr">Traficoo</a>.<br>
+      Ce site sera mon pilier pour les contacts.<br><br>
+
+      <strong>Voici les mises à jour à venir dans la version 10.0 :</strong><br>
+      - Ajout d'un chat avec <code>/chat</code> pour communiquer directement avec moi<br>
+      - Ajout de la page <code>/maj</code> disponible dès la 9.3<br>
+      - Ajout de mes projets informatiques<br>
+      - Ajout de <code>/contact</code><br>
+      - Et bien d'autres à venir !<br><br>
+
+      Merci pour votre soutien 💜<br>
+    </p>
+  </div>
+</body>
+</html>
