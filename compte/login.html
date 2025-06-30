@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxCompte | Connexion</title>
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #bb86fc;
+            --accent-hover: #9b5ff4;
+            --border-color: #333333;
+            --input-bg: #2d2d2d;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(187, 134, 252, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(187, 134, 252, 0.1) 0%, transparent 50%);
+        }
+
+        .login-container {
+            background-color: var(--bg-secondary);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+        }
+
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent-color);
+            color: #121212;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .login-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .toggle-password:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Connexion</h1>
+            <p>Accédez à votre espace personnel</p>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" class="form-control" placeholder="Entrez votre email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <div class="password-container">
+                    <input type="password" id="password" class="form-control" placeholder="Votre mot de passe" required>
+                    <span class="toggle-password">👁️</span>
+                </div>
+            </div>
+
+            <div class="login-footer" style="text-align: right; margin: 10px 0 20px;">
+                <a href="mot-de-passe-oublié.html">Mot de passe oublié ?</a>
+            </div>
+
+            <button type="submit" class="btn">Se connecter</button>
+
+            <div class="login-footer">
+                <p>Pas encore de compte ? <a href="register.html">S'inscrire</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+        });
+    </script>
+</body>
+</html>
